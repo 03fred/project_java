@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>Project_JAVA</artifactId>
+	<artifactId>Project_Java</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Project_JAVA</name>
-	<description>Demo project for Spring Boot</description>
+	<name>Project_Java</name>
+	<description>projeto criar</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -46,5 +46,4 @@
 		</plugins>
 	</build>
 
-	<packaging>ear</packaging>
 </project>
