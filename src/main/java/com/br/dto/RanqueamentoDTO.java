@@ -3,6 +3,7 @@ package com.br.dto;
 import java.util.List;
 
 import com.br.model.Volta;
+import com.br.utils.Utils;
 
 public class RanqueamentoDTO {
 
@@ -17,6 +18,14 @@ public class RanqueamentoDTO {
 		this.melhorVolta = melhorVolta;
 
 	}
-	
-	
+
+	private void calcularDiferenca() {
+
+		Volta primeiroColocado = this.listaMelhorVoltaPorPiloto.get(0);
+		for (Volta volta : listaMelhorVoltaPorPiloto) {
+		
+		}
+		
+	}
+
 }

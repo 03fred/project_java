@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.br.dto.VoltaDTO;
 import com.br.helpers.Helpers;
 import com.br.model.Volta;
 import com.br.utils.Utils;
@@ -12,7 +13,7 @@ import com.br.utils.Utils;
 @Service
 public class RanqueaCorridaService {
 
-	private List<Volta> listaMelhoresVoltasPiloto = new ArrayList<Volta>();
+	private List<VoltaDTO> listaMelhoresVoltasPiloto = new ArrayList<VoltaDTO>();
 
 	public void ranquearCorrida(List<Volta> listaVoltas) {
 		Volta melhorVoltaCorrida = listaVoltas.get(0);
@@ -38,7 +39,8 @@ public class RanqueaCorridaService {
 				melhorVoltaPiloto.setVelocidadeMediaProva(Helpers.formatarDuasCasasDecimais(media));
 				melhorVoltaPiloto.setTempoTotalProva(somaTempoTotal);
 
-				listaMelhoresVoltasPiloto.add(melhorVoltaPiloto);
+				VoltaDTO voltaDto = this.retornarVoltaDTO(melhorVoltaPiloto);
+				listaMelhoresVoltasPiloto.add(voltaDto);
 
 				idPiloto = volta.getIdPiloto();
 				melhorVoltaPiloto = volta;
@@ -53,5 +55,8 @@ public class RanqueaCorridaService {
 
 	}
 
+	private VoltaDTO retornarVoltaDTO(Volta volta) {
 	
+		return null;
+	}
 }
