@@ -3,6 +3,7 @@ package com.br.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.br.helpers.Helpers;
@@ -11,6 +12,9 @@ import com.br.utils.Utils;
 
 @Service
 public class RanqueaCorridaService {
+
+	@Autowired
+	private RetornaTempoVencedor retornaTempoVencedor;
 
 	private List<Volta> listaMelhoresVoltasPiloto = new ArrayList<Volta>();
 
@@ -50,8 +54,7 @@ public class RanqueaCorridaService {
 			if (Utils.retornarMelhorVolta(melhorVoltaPiloto, volta))
 				melhorVoltaPiloto = volta;
 		}
-
+		retornaTempoVencedor.retornaMelhorTempo(listaMelhoresVoltasPiloto);
 	}
 
-	
 }
