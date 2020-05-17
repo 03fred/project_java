@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.br.helpers.Helpers;
 import com.br.model.Volta;
+import com.br.utils.Utils;
 
 @Service
 public class RanqueaCorridaService {
@@ -25,7 +26,7 @@ public class RanqueaCorridaService {
 
 			contVoltas++;
 
-			if (retornarMelhorVolta(melhorVoltaCorrida, volta))
+			if (Utils.retornarMelhorVolta(melhorVoltaCorrida, volta))
 				melhorVoltaCorrida = volta;
 
 			somaVelocidadeMedia += volta.getVelocidadeMedia();
@@ -46,20 +47,11 @@ public class RanqueaCorridaService {
 				somaTempoTotal = 0;
 			}
 
-			if (retornarMelhorVolta(melhorVoltaPiloto, volta))
+			if (Utils.retornarMelhorVolta(melhorVoltaPiloto, volta))
 				melhorVoltaPiloto = volta;
 		}
 
 	}
 
-	private boolean retornarMelhorVolta(Volta melhorVolta, Volta voltaAtual) {
-
-		int melhorTempo = Helpers.converterTempoVoltaParaDouble(melhorVolta.getTempoVolta());
-		int tempoAtual = Helpers.converterTempoVoltaParaDouble(voltaAtual.getTempoVolta());
-
-		if (melhorTempo > tempoAtual)
-			return true;
-
-		return false;
-	}
+	
 }
