@@ -14,6 +14,10 @@ public class Helpers {
 
 	public static String formatarDuasCasasDecimais(double valor) {
 		DecimalFormat df = new DecimalFormat("###.00");
-		return df.format(valor); 
+		return df.format(valor);
+	}
+
+	public static int converterTempoVoltaParaDouble(String tempo) {
+		return Integer.parseInt(tempo.replace(":", "").replace(".", "").trim());
 	}
 }

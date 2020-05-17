@@ -18,24 +18,32 @@ public class RanqueaCorridaService {
 		Volta melhorVoltaPiloto = melhorVoltaCorrida;
 		int idPiloto = melhorVoltaCorrida.getIdPiloto();
 		double somaVelocidadeMedia = 0;
+		double somaTempoTotal = 0;
 		int contVoltas = 0;
 
 		for (Volta volta : listaVoltas) {
+
 			contVoltas++;
+
 			if (retornarMelhorVolta(melhorVoltaCorrida, volta))
 				melhorVoltaCorrida = volta;
 
 			somaVelocidadeMedia += volta.getVelocidadeMedia();
+			somaTempoTotal += Helpers.converterTempoVoltaParaDouble(volta.getTempoVolta());
 
 			if (idPiloto != volta.getIdPiloto()) {
 				double media = somaVelocidadeMedia / contVoltas;
-				somaVelocidadeMedia = 0;
-				contVoltas = 0;
 
 				melhorVoltaPiloto.setVelocidadeMediaProva(Helpers.formatarDuasCasasDecimais(media));
+				melhorVoltaPiloto.setTempoTotalProva(somaTempoTotal);
+
 				listaMelhoresVoltasPiloto.add(melhorVoltaPiloto);
+
 				idPiloto = volta.getIdPiloto();
 				melhorVoltaPiloto = volta;
+				contVoltas = 0;
+				somaVelocidadeMedia = 0;
+				somaTempoTotal = 0;
 			}
 
 			if (retornarMelhorVolta(melhorVoltaPiloto, volta))
@@ -46,8 +54,8 @@ public class RanqueaCorridaService {
 
 	private boolean retornarMelhorVolta(Volta melhorVolta, Volta voltaAtual) {
 
-		int melhorTempo = Integer.parseInt(melhorVolta.getTempoVolta().replace(":", "").replace(".", "").trim());
-		int tempoAtual = Integer.parseInt(voltaAtual.getTempoVolta().replace(":", "").replace(".", "").trim());
+		int melhorTempo = Helpers.converterTempoVoltaParaDouble(melhorVolta.getTempoVolta());
+		int tempoAtual = Helpers.converterTempoVoltaParaDouble(voltaAtual.getTempoVolta());
 
 		if (melhorTempo > tempoAtual)
 			return true;

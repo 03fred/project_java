@@ -5,7 +5,7 @@ public class Piloto {
 	private int idPiloto;
 	private String nomePiloto;
 	private String velocidadeMediaProva;
-	private String tempoTotalProva;
+	private double tempoTotalProva;
 	private String tempoPosPrimeiroColocado;
 
 	public int getIdPiloto() {
@@ -32,11 +32,11 @@ public class Piloto {
 		this.velocidadeMediaProva = velocidadeMediaProva;
 	}
 
-	public String getTempoTotalProva() {
+	public double getTempoTotalProva() {
 		return tempoTotalProva;
 	}
 
-	public void setTempoTotalProva(String tempoTotalProva) {
+	public void setTempoTotalProva(double tempoTotalProva) {
 		this.tempoTotalProva = tempoTotalProva;
 	}
 
