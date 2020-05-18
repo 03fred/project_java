@@ -4,34 +4,34 @@ import java.sql.Time;
 
 public class Piloto {
 
-	private int idPiloto;
-	private String nomePiloto;
-	private String velocidadeMediaProva;
+	private int id;
+	private String nome;
+	private String velocidadeMedia;
 	private Time tempoTotalProva;
 	private String tempoPosPrimeiroColocado;
 
 	public int getIdPiloto() {
-		return idPiloto;
+		return id;
 	}
 
 	public void setIdPiloto(int idPiloto) {
-		this.idPiloto = idPiloto;
+		this.id = idPiloto;
 	}
 
 	public String getNomePiloto() {
-		return nomePiloto;
+		return nome;
 	}
 
 	public void setNomePiloto(String nomePiloto) {
-		this.nomePiloto = nomePiloto;
+		this.nome = nomePiloto;
 	}
 
 	public String getVelocidadeMediaProva() {
-		return velocidadeMediaProva;
+		return velocidadeMedia;
 	}
 
 	public void setVelocidadeMediaProva(String velocidadeMediaProva) {
-		this.velocidadeMediaProva = velocidadeMediaProva;
+		this.velocidadeMedia = velocidadeMediaProva;
 	}
 
 	public Time getTempoTotalProva() {

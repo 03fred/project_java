@@ -5,7 +5,7 @@ import java.sql.Time;
 public class Volta extends Piloto implements Comparable<Volta> {
 
 	private String horaVolta;
-	private int numeroVolta;
+	private int volta;
 	private Time tempoVolta;
 	private double velocidadeMedia;
 
@@ -18,11 +18,11 @@ public class Volta extends Piloto implements Comparable<Volta> {
 	}
 
 	public int getNumeroVolta() {
-		return numeroVolta;
+		return volta;
 	}
 
 	public void setNumeroVolta(int numeroVolta) {
-		this.numeroVolta = numeroVolta;
+		this.volta = numeroVolta;
 	}
 
 	public Time getTempoVolta() {
@@ -54,7 +54,7 @@ public class Volta extends Piloto implements Comparable<Volta> {
 
 	@Override
 	public String toString() {
-		return "Volta [horaVolta=" + horaVolta + ", numeroVolta=" + numeroVolta + ", tempoVolta=" + tempoVolta
+		return "Volta [horaVolta=" + horaVolta + ", numeroVolta=" + volta + ", tempoVolta=" + tempoVolta
 				+ ", velocidadeMedia=" + velocidadeMedia + ", velocidadeMediaProva=" + getVelocidadeMediaProva()
 				+ "diferecaVencedor=" + getTempoPosPrimeiroColocado() + "tempoTotalProva" + getTempoTotalProva() + "]";
 	}
