@@ -8,6 +8,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.br.dto.DadosCorridaDTO;
 import com.br.service.ProcessaCorridaService;
 
 @Controller
@@ -27,7 +30,8 @@ public class ProcessaCorridaController {
 	private ProcessaCorridaService service;
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Void> processarCorridda(@RequestParam("file") MultipartFile file) throws IOException {
+	public ResponseEntity<DadosCorridaDTO> processarCorridda(@RequestParam("file") MultipartFile file)
+			throws IOException {
 
 		if (file != null) {
 			File copied = new File("./temp/file.csv");
@@ -42,7 +46,8 @@ public class ProcessaCorridaController {
 			}
 		}
 
-		service.processarCorrida();
-		return null;
+		DadosCorridaDTO data = service.processarCorrida();
+		 HttpHeaders httpHeaders = new HttpHeaders();
+         return new ResponseEntity<DadosCorridaDTO>(data, httpHeaders, HttpStatus.CREATED);  
 	}
 }

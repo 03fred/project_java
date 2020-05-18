@@ -1,11 +1,13 @@
 package com.br.model;
 
+import java.sql.Time;
+
 public class Piloto {
 
 	private int idPiloto;
 	private String nomePiloto;
 	private String velocidadeMediaProva;
-	private double tempoTotalProva;
+	private Time tempoTotalProva;
 	private String tempoPosPrimeiroColocado;
 
 	public int getIdPiloto() {
@@ -32,11 +34,11 @@ public class Piloto {
 		this.velocidadeMediaProva = velocidadeMediaProva;
 	}
 
-	public double getTempoTotalProva() {
+	public Time getTempoTotalProva() {
 		return tempoTotalProva;
 	}
 
-	public void setTempoTotalProva(double tempoTotalProva) {
+	public void setTempoTotalProva(Time tempoTotalProva) {
 		this.tempoTotalProva = tempoTotalProva;
 	}
 

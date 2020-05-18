@@ -1,18 +1,11 @@
 package com.br.utils;
 
-import com.br.helpers.Helpers;
-import com.br.model.Volta;
+import java.sql.Time;
 
 public class Utils {
 
-	public static boolean retornarMelhorVolta(Volta melhorVolta, Volta voltaAtual) {
+	public static boolean retornarMelhorVolta(Time melhorTempo, Time tempoAtual) {
 
-		int melhorTempo = Helpers.converterTempoVoltaParaDouble(melhorVolta.getTempoVolta());
-		int tempoAtual = Helpers.converterTempoVoltaParaDouble(voltaAtual.getTempoVolta());
-
-		if (melhorTempo > tempoAtual)
-			return true;
-
-		return false;
+		return melhorTempo.after(tempoAtual);
 	}
 }
