@@ -46,12 +46,8 @@ public class RanqueaCorridaService {
 
 			if (idPiloto != volta.getIdPiloto()) {
 				double media = somaVelocidadeMedia / contVoltas;
-
-				melhorVoltaPiloto.setVelocidadeMediaProva(Helpers.formatarDuasCasasDecimais(media));
-				melhorVoltaPiloto.setTempoTotalProva(somaTempoTotal);
-
-				listaMelhoresVoltasPiloto.add(melhorVoltaPiloto);
-
+         		volta.setTempoTotalProva(somaTempoTotal);
+				listaMelhoresVoltasPiloto.add(volta);
 				idPiloto = volta.getIdPiloto();
 				melhorVoltaPiloto = volta;
 				contVoltas = 0;
@@ -84,6 +80,7 @@ public class RanqueaCorridaService {
 		return voltas;
 	}
 
+
 	private LocalDateTime parsearData(Time tempo) {
 		Date dataAtual = new Date();
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -95,4 +92,5 @@ public class RanqueaCorridaService {
 
 		return dateTime;
 	}
+
 }
