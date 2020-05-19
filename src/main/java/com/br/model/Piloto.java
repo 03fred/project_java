@@ -9,9 +9,7 @@ public class Piloto {
 	private double velocidadeMedia;
 	private String velocidadeMediaProva;
 	private Time tempoMelhorVolta;
-	private Time tempoTotalProva;
-	private String tempoPosPrimeiroColocado;
-	private int voltasCompletadas;
+
 
 	public int getIdPiloto() {
 		return id;
@@ -30,36 +28,12 @@ public class Piloto {
 	}
 
 
-	public Time getTempoTotalProva() {
-		return tempoTotalProva;
-	}
-
-	public void setTempoTotalProva(Time tempoTotalProva) {
-		this.tempoTotalProva = tempoTotalProva;
-	}
-
 	public Time getTempoMelhorVolta() {
 		return tempoMelhorVolta;
 	}
 
 	public void setTempoMelhorVolta(Time tempoMelhorVolta) {
 		this.tempoMelhorVolta = tempoMelhorVolta;
-	}
-
-	public String getTempoPosPrimeiroColocado() {
-		return tempoPosPrimeiroColocado;
-	}
-
-	public void setTempoPosPrimeiroColocado(String tempoPosPrimeiroColocado) {
-		this.tempoPosPrimeiroColocado = tempoPosPrimeiroColocado;
-	}
-
-	public int getVoltasCompletadas() {
-		return voltasCompletadas;
-	}
-
-	public void setVoltasCompletadas(int voltasCompletadas) {
-		this.voltasCompletadas = voltasCompletadas;
 	}
 
 	public double getVelocidadeMedia() {

@@ -10,10 +10,10 @@ public class DadosCorridaDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private List<Volta> detalhamentoVoltas = new ArrayList<Volta>();
-	private List<Volta> melhorVoltaPiloto;
+	private List<PilotoDTO> melhorVoltaPiloto;
 	private Volta melhorVoltaCorrida;
 
-	public DadosCorridaDTO(List<Volta> listaVolta, List<Volta> listaMelhoresVoltasPiloto, Volta melhorVolta) {
+	public DadosCorridaDTO(List<Volta> listaVolta, List<PilotoDTO> listaMelhoresVoltasPiloto, Volta melhorVolta) {
 		this.detalhamentoVoltas = listaVolta;
 		this.melhorVoltaPiloto = listaMelhoresVoltasPiloto;
 		this.melhorVoltaCorrida = melhorVolta;
@@ -24,7 +24,7 @@ public class DadosCorridaDTO implements Serializable {
 		return detalhamentoVoltas;
 	}
 
-	public List<Volta> getMelhorVoltaPiloto() {
+	public List<PilotoDTO> getMelhorVoltaPiloto() {
 		return melhorVoltaPiloto;
 	}
 

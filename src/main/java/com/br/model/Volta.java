@@ -43,11 +43,4 @@ public class Volta extends Piloto implements Comparable<Volta> {
 		return 0;
 	}
 
-	@Override
-	public String toString() {
-		return "Volta [horaVolta=" + horaVolta + ", numeroVolta=" + volta + ", tempoVolta=" + tempoVolta
-				+ ", velocidadeMedia=" + getVelocidadeMedia() + ", velocidadeMediaProva=" + getVelocidadeMediaProva()
-				+ "diferecaVencedor=" + getTempoPosPrimeiroColocado() + "tempoTotalProva" + getTempoTotalProva() + "]";
-	}
-
 }

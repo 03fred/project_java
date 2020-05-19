@@ -5,31 +5,32 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.br.dto.PilotoDTO;
 import com.br.model.Volta;
 import com.br.utils.Utils;
 
 @Service
 public class RetornaTempoVencedor {
+//retorna o melhor tempo da corrida
+	public Time retornarMelhorTempo(List<PilotoDTO> listaMelhorVoltaPorPiloto) {
 
-	public Time retornarMelhorTempo(List<Volta> listaMelhorVoltaPorPiloto) {
-
-		Volta melhorTempo = null;
+		PilotoDTO vencedor = null;
 		int numeroVoltasCorrida = 4;
 		
 
-		for (Volta volta : listaMelhorVoltaPorPiloto) {
-
-			if(volta.getVoltasCompletadas() == numeroVoltasCorrida) {
-				if (melhorTempo == null){
-					melhorTempo = volta;
+		for (PilotoDTO dto : listaMelhorVoltaPorPiloto) {
+			 
+			if(dto.getVoltasCompletadas() == numeroVoltasCorrida) {
+				if (vencedor == null){
+					vencedor = dto;
 				}
-				if(Utils.retornarMelhorVolta(melhorTempo.getTempoTotalProva(), volta.getTempoTotalProva())) {
-					melhorTempo = volta;
+				if(Utils.retornarMelhorVolta(vencedor.getTempoTotalProva(), dto.getTempoTotalProva())) {
+					vencedor = dto;
 				}
 			}
 			
 		}
-
-		return melhorTempo.getTempoTotalProva();
+         
+		return vencedor.getTempoTotalProva();
 	}
 }

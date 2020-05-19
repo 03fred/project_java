@@ -43,10 +43,10 @@ function popularMelhoresVoltas(dados) {
            data-parent="#accordion">
            <div class="card-body">
                <ul class="list-group">
-                   <li class="list-group-item active">Melhor Volta: ${dataMelhorVoltaPiloto.tempoVolta}</li>
+                   <li class="list-group-item active">Melhor Volta: ${dataMelhorVoltaPiloto.tempoMelhorVolta}</li>
                    <li class="list-group-item">Id do piloto: ${dataMelhorVoltaPiloto.idPiloto}</li>
                    <li class="list-group-item">Nome do piloto: ${dataMelhorVoltaPiloto.nomePiloto}</li>
-                   <li class="list-group-item">Número da volta: ${dataMelhorVoltaPiloto.voltasCompletadas}</li>
+                   <li class="list-group-item">Número total de voltas: ${dataMelhorVoltaPiloto.voltasCompletadas}</li>
                    <li class="list-group-item">Velocidade média total: ${dataMelhorVoltaPiloto.velocidadeMediaProva}</li>
                    <li class="list-group-item">Difrença para o 1° colocado: ${dataMelhorVoltaPiloto.tempoPosPrimeiroColocado == undefined ? 'Vencedor' || dataMelhorVoltaPiloto.tempoPosPrimeiroColocado === null : dataMelhorVoltaPiloto.tempoPosPrimeiroColocado}</li>
                    <li class="list-group-item">Tempo total de prova: ${dataMelhorVoltaPiloto.tempoTotalProva}</li>
