@@ -13,18 +13,23 @@ public class RetornaTempoVencedor {
 
 	public Time retornarMelhorTempo(List<Volta> listaMelhorVoltaPorPiloto) {
 
-		Volta melhorTempo = listaMelhorVoltaPorPiloto.get(0);
-		int numeroVoltasCorrida = 0;
+		Volta melhorTempo = null;
+		int numeroVoltasCorrida = 4;
+		
 
 		for (Volta volta : listaMelhorVoltaPorPiloto) {
-             
-			if (volta.getNumeroVolta() > numeroVoltasCorrida)
-				numeroVoltasCorrida = volta.getNumeroVolta();
-			System.out.println(numeroVoltasCorrida);
-			if (Utils.retornarMelhorVolta(melhorTempo.getTempoVolta(), volta.getTempoVolta()) && volta.getNumeroVolta() == numeroVoltasCorrida)
-				melhorTempo = volta;
+
+			if(volta.getVoltasCompletadas() == numeroVoltasCorrida) {
+				if (melhorTempo == null){
+					melhorTempo = volta;
+				}
+				if(Utils.retornarMelhorVolta(melhorTempo.getTempoTotalProva(), volta.getTempoTotalProva())) {
+					melhorTempo = volta;
+				}
+			}
+			
 		}
-       
+
 		return melhorTempo.getTempoTotalProva();
 	}
 }

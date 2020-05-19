@@ -46,8 +46,9 @@ public class RanqueaCorridaService {
 				melhorVoltaPiloto = volta;
 			
 			somaTempoTotal = Helpers.sormarTempo(somaTempoTotal, volta.getTempoVolta());
-			
+		
 			if (idPiloto != volta.getIdPiloto()) {
+				
 				double media = somaVelocidadeMedia / contVoltas;
 				volta.setTempoTotalProva(somaTempoTotal);
 				volta.setVoltasCompletadas(contVoltas);
@@ -63,7 +64,7 @@ public class RanqueaCorridaService {
 			}
 			
 		}
-
+		
 		Time tempoTotalVencedor = retornaTempoVencedor.retornarMelhorTempo(listaMelhoresVoltasPiloto);
 		listaMelhoresVoltasPiloto = retornarVoltasDiferencaVencedor(listaMelhoresVoltasPiloto, tempoTotalVencedor);
 
