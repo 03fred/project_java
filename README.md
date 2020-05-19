@@ -1,6 +1,6 @@
 # project_java
 
-Abra o link do gitpod - gitpod.io/#https://github.com/03fred/project_java
+Abra o link do gitpod - www.gitpod.io/#https://github.com/03fred/project_java
 Após a autenticação 
 baixe o arquivo /temp/file.csv, arquivo de exemplo de funcionamento 
 Clique em debug -> start without debugging  
