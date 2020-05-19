@@ -1,8 +1,8 @@
 var requestUtils = {
     showProgress: true,
     showError: true,
-    url: 'https://8080-e1a93fea-4369-4d90-b701-80c67c5c874b.ws-us02.gitpod.io/',
-//    url: 'http://localhost:8080/',
+//    url: 'https://8080-e1a93fea-4369-4d90-b701-80c67c5c874b.ws-us02.gitpod.io/',
+    url: 'http://localhost:8080/',
     doPostFile: function (path, dataItens, callback) {
         loading();
         $.ajax({
