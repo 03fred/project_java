@@ -24,39 +24,44 @@ public class RanqueaCorridaService {
 	@Autowired
 	private RetornaTempoVencedor retornaTempoVencedor;
 
-	private List<Volta> listaMelhoresVoltasPiloto = new ArrayList<Volta>();
-
 	public DadosCorridaDTO ranquearCorrida(List<Volta> listaVoltas) {
+		List<Volta> listaMelhoresVoltasPiloto = new ArrayList<Volta>();
+
 		Volta melhorVoltaCorrida = listaVoltas.get(0);
 		Volta melhorVoltaPiloto = melhorVoltaCorrida;
 		int idPiloto = melhorVoltaCorrida.getIdPiloto();
 		double somaVelocidadeMedia = 0;
 		Time somaTempoTotal = new Time(0);
-		int contVoltas = 0;
+		int contVoltas = -1;
 
 		for (Volta volta : listaVoltas) {
 
 			contVoltas++;
+			somaVelocidadeMedia += volta.getVelocidadeMedia();
 
 			if (Utils.retornarMelhorVolta(melhorVoltaCorrida.getTempoVolta(), volta.getTempoVolta()))
 				melhorVoltaCorrida = volta;
-
-			somaVelocidadeMedia += volta.getVelocidadeMedia();
+				
+			if (Utils.retornarMelhorVolta(melhorVoltaPiloto.getTempoVolta(), volta.getTempoVolta()))
+				melhorVoltaPiloto = volta;
+			
 			somaTempoTotal = Helpers.sormarTempo(somaTempoTotal, volta.getTempoVolta());
-
+			
 			if (idPiloto != volta.getIdPiloto()) {
 				double media = somaVelocidadeMedia / contVoltas;
-         		volta.setTempoTotalProva(somaTempoTotal);
+				volta.setTempoTotalProva(somaTempoTotal);
+				volta.setVoltasCompletadas(contVoltas);
+				volta.setVelocidadeMediaProva(Helpers.formatarDuasCasasDecimais(media));
+				volta.setTempoMelhorVolta(melhorVoltaPiloto.getTempoVolta());
 				listaMelhoresVoltasPiloto.add(volta);
 				idPiloto = volta.getIdPiloto();
 				melhorVoltaPiloto = volta;
 				contVoltas = 0;
 				somaVelocidadeMedia = 0;
 				somaTempoTotal = new Time(0);
+				idPiloto = volta.getIdPiloto();
 			}
-
-			if (Utils.retornarMelhorVolta(melhorVoltaPiloto.getTempoVolta(), volta.getTempoVolta()))
-				melhorVoltaPiloto = volta;
+			
 		}
 
 		Time tempoTotalVencedor = retornaTempoVencedor.retornarMelhorTempo(listaMelhoresVoltasPiloto);
@@ -67,19 +72,19 @@ public class RanqueaCorridaService {
 
 	private List<Volta> retornarVoltasDiferencaVencedor(List<Volta> voltas, Time tempoVencedor) {
 		LocalDateTime tempoDataVencedor = this.parsearData(tempoVencedor);
+		System.out.println(tempoVencedor);
 		for (Volta volta : voltas) {
-
+         
 			LocalDateTime tempoDataPiloto = this.parsearData(volta.getTempoTotalProva());
-			long minutos = ChronoUnit.MINUTES.between(tempoDataVencedor, tempoDataPiloto);
-			long segundos = ChronoUnit.SECONDS.between(tempoDataVencedor, tempoDataPiloto);
-			long horas = ChronoUnit.HOURS.between(tempoDataVencedor, tempoDataPiloto);
-			volta.setTempoPosPrimeiroColocado(horas + ":" + minutos + ":" + segundos);
-            System.out.println(minutos);
-            System.out.println(segundos);
+			long tempototal = ChronoUnit.SECONDS.between(tempoDataVencedor, tempoDataPiloto);
+			long segundos = tempototal % 60;
+			long minutos = ((tempototal - segundos) / 60) % 60;
+			long horas = ((tempototal - segundos - (minutos*60)))/(60*60);
+			volta.setTempoPosPrimeiroColocado(horas + ":" + Helpers.formatarParaRelogio(minutos) + ":" + Helpers.formatarParaRelogio(segundos));
+
 		}
 		return voltas;
 	}
-
 
 	private LocalDateTime parsearData(Time tempo) {
 		Date dataAtual = new Date();

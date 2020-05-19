@@ -1,5 +1,6 @@
 package com.br.service;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -20,9 +21,10 @@ public class ProcessaCorridaService {
 
 	@Autowired
 	private RanqueaCorridaService ranqueaCorridaService;
-	private ArrayList<Volta> listaVoltas = new ArrayList<Volta>();
 
 	public DadosCorridaDTO processarCorrida() throws IOException {
+		ArrayList<Volta> listaVoltas = new ArrayList<Volta>();
+
 		Path path = Paths.get("./temp/file.csv");
 		Files.lines(path).skip(1L).forEach(linha -> {
 			try {
@@ -32,7 +34,10 @@ public class ProcessaCorridaService {
 				e.printStackTrace();
 			}
 		});
+
+		
 		Collections.sort(listaVoltas);
+
 		return ranqueaCorridaService.ranquearCorrida(listaVoltas);
 	}
 

@@ -7,7 +7,6 @@ public class Volta extends Piloto implements Comparable<Volta> {
 	private String horaVolta;
 	private int volta;
 	private Time tempoVolta;
-	private double velocidadeMedia;
 
 	public String getHoraVolta() {
 		return horaVolta;
@@ -33,14 +32,6 @@ public class Volta extends Piloto implements Comparable<Volta> {
 		this.tempoVolta = tempoVolta;
 	}
 
-	public double getVelocidadeMedia() {
-		return velocidadeMedia;
-	}
-
-	public void setVelocidadeMedia(double velocidadeMedia) {
-		this.velocidadeMedia = velocidadeMedia;
-	}
-
 	@Override
 	public int compareTo(Volta novaVolta) {
 		if (this.getIdPiloto() > novaVolta.getIdPiloto()) {
@@ -55,7 +46,7 @@ public class Volta extends Piloto implements Comparable<Volta> {
 	@Override
 	public String toString() {
 		return "Volta [horaVolta=" + horaVolta + ", numeroVolta=" + volta + ", tempoVolta=" + tempoVolta
-				+ ", velocidadeMedia=" + velocidadeMedia + ", velocidadeMediaProva=" + getVelocidadeMediaProva()
+				+ ", velocidadeMedia=" + getVelocidadeMedia() + ", velocidadeMediaProva=" + getVelocidadeMediaProva()
 				+ "diferecaVencedor=" + getTempoPosPrimeiroColocado() + "tempoTotalProva" + getTempoTotalProva() + "]";
 	}
 

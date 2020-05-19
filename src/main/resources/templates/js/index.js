@@ -19,9 +19,9 @@ window.onload = function () {
 
 function popularMelhorVolta(dataMelhorVolta) {
     $("#tempo-melhor-volta").empty().append(`Tempo da volta: ${dataMelhorVolta.tempoVolta}`);
-    $("#id-piloto-melhor-volta").empty().append(`Id do piloto: ${dataMelhorVolta.id}`);
-    $("#nome-pilo-melhor-volta").empty().append(`Nome do piloto: ${dataMelhorVolta.nome}`);
-    $("#numero-volta").empty().append(`Número da volta: ${dataMelhorVolta.volta}`);
+    $("#id-piloto-melhor-volta").empty().append(`Id do piloto: ${dataMelhorVolta.idPiloto}`);
+    $("#nome-pilo-melhor-volta").empty().append(`Nome do piloto: ${dataMelhorVolta.nomePiloto}`);
+    $("#numero-volta").empty().append(`Número da volta: ${dataMelhorVolta.numeroVolta}`);
 }
 
 function popularMelhoresVoltas(dados) {
@@ -44,11 +44,11 @@ function popularMelhoresVoltas(dados) {
            <div class="card-body">
                <ul class="list-group">
                    <li class="list-group-item active">Melhor Volta: ${dataMelhorVoltaPiloto.tempoVolta}</li>
-                   <li class="list-group-item">Id do piloto: ${dataMelhorVoltaPiloto.id}</li>
-                   <li class="list-group-item">Nome do piloto: ${dataMelhorVoltaPiloto.nome}</li>
-                   <li class="list-group-item">Número da volta: ${dataMelhorVoltaPiloto.volta}</li>
-                   <li class="list-group-item">Velocidade média total: ${dataMelhorVoltaPiloto.velocidadeMediaTotal}</li>
-                   <li class="list-group-item">Difrença para o 1° colocado: ${dataMelhorVoltaPiloto.tempoAtrasPrimeiroColado == undefined ? 'Vencedor' : dataMelhorVoltaPiloto.tempoAtrasPrimeiroColado}</li>
+                   <li class="list-group-item">Id do piloto: ${dataMelhorVoltaPiloto.idPiloto}</li>
+                   <li class="list-group-item">Nome do piloto: ${dataMelhorVoltaPiloto.nomePiloto}</li>
+                   <li class="list-group-item">Número da volta: ${dataMelhorVoltaPiloto.voltasCompletadas}</li>
+                   <li class="list-group-item">Velocidade média total: ${dataMelhorVoltaPiloto.velocidadeMediaProva}</li>
+                   <li class="list-group-item">Difrença para o 1° colocado: ${dataMelhorVoltaPiloto.tempoPosPrimeiroColocado == undefined ? 'Vencedor' || dataMelhorVoltaPiloto.tempoPosPrimeiroColocado === null : dataMelhorVoltaPiloto.tempoPosPrimeiroColocado}</li>
                    <li class="list-group-item">Tempo total de prova: ${dataMelhorVoltaPiloto.tempoTotalProva}</li>
                    </ul>
            </div>
@@ -70,11 +70,11 @@ function popularDetalhamentoProva(data) {
         data: data,
 
         fields: [
-            { name: "id", type: "text", width: "auto", title: "Id do piloto" },
-            { name: "nome", type: "text", width: "auto", title: "Nome do piloto" },
+            { name: "idPiloto", type: "text", width: "auto", title: "Id do piloto" },
+            { name: "nomePiloto", type: "text", width: "auto", title: "Nome do piloto" },
             { name: "tempoVolta", type: "text", width: "auto", title: "Tempo da volta" },
             { name: "velocidadeMedia", type: "text", width: "auto", title: "Velocidade Média" },
-            { name: "volta", type: "text", width: "auto", title: "Volta" }
+            { name: "numeroVolta", type: "text", width: "auto", title: "Volta" }
         ]
     });
 }

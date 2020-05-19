@@ -17,10 +17,7 @@ public class DadosCorridaDTO implements Serializable {
 		this.detalhamentoVoltas = listaVolta;
 		this.melhorVoltaPiloto = listaMelhoresVoltasPiloto;
 		this.melhorVoltaCorrida = melhorVolta;
-	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 
 	public List<Volta> getDetalhamentoVoltas() {

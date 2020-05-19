@@ -20,7 +20,7 @@ public class RetornaTempoVencedor {
              
 			if (volta.getNumeroVolta() > numeroVoltasCorrida)
 				numeroVoltasCorrida = volta.getNumeroVolta();
-
+			System.out.println(numeroVoltasCorrida);
 			if (Utils.retornarMelhorVolta(melhorTempo.getTempoVolta(), volta.getTempoVolta()) && volta.getNumeroVolta() == numeroVoltasCorrida)
 				melhorTempo = volta;
 		}

@@ -21,6 +21,10 @@ public class Helpers {
 		return df.format(valor);
 	}
 
+	public static String formatarParaRelogio(double valor) {
+		int v = (int) valor;
+		return (valor < 10)? "0"+String.valueOf(v) : String.valueOf(v);
+	}
 	public static double converterTempoVoltaParaDouble(String tempo) {
 		return Double.parseDouble(tempo.replace(":", "").trim());
 	}
