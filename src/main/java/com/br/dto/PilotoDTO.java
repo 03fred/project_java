@@ -8,7 +8,7 @@ public class PilotoDTO implements Comparable<PilotoDTO> {
 
 	private int idPiloto;
 	private String nomePiloto;
-	private String velocidadeMediaProva;
+	private double velocidadeMediaProva;
 	private Time tempoMelhorVolta;
 	private Time tempoTotalProva;
 	private String tempoPosPrimeiroColocado;
@@ -30,11 +30,11 @@ public class PilotoDTO implements Comparable<PilotoDTO> {
 		this.nomePiloto = nomePiloto;
 	}
 
-	public String getVelocidadeMediaProva() {
+	public double getVelocidadeMediaProva() {
 		return velocidadeMediaProva;
 	}
 
-	public void setVelocidadeMediaProva(String velocidadeMediaProva) {
+	public void setVelocidadeMediaProva(double velocidadeMediaProva) {
 		this.velocidadeMediaProva = velocidadeMediaProva;
 	}
 
@@ -51,6 +51,7 @@ public class PilotoDTO implements Comparable<PilotoDTO> {
 	}
 
 	public void setTempoTotalProva(Time tempoTotalProva) {
+		this.setVoltasCompletadas(this.getVoltasCompletadas()+1);
 		this.tempoTotalProva = tempoTotalProva;
 	}
 
