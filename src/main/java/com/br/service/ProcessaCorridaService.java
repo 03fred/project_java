@@ -35,12 +35,13 @@ public class ProcessaCorridaService {
 			}
 		});
 
-		
+		//ordena lista
 		Collections.sort(listaVoltas);
 
 		return ranqueaCorridaService.ranquearCorrida(listaVoltas);
 	}
 
+	//cria o objeto voltas
 	private Volta criarVoltas(String linha) throws ParseException {
 		String dadosvolta[] = linha.split(";");
 		Volta volta = new Volta();

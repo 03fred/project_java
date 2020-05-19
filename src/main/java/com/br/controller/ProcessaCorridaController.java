@@ -21,18 +21,19 @@ import org.springframework.web.multipart.MultipartFile;
 import com.br.dto.DadosCorridaDTO;
 import com.br.service.ProcessaCorridaService;
 
-
+//configuraçõs rest
 @RestController
 @RequestMapping(value = "/processa-corrida")
 public class ProcessaCorridaController {
 
+	//injeta dependencia
 	@Autowired
 	private ProcessaCorridaService service;
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<DadosCorridaDTO> processarCorridda(@RequestParam("file") MultipartFile file)
 			throws IOException {
-
+       //salva o arquivo
 		if (file != null) {
 			File copied = new File("./temp/file.csv");
 			InputStream input = file.getInputStream();
@@ -45,7 +46,7 @@ public class ProcessaCorridaController {
 				out.flush();
 			}
 		}
-
+         //busca o processamento da corrida
 		DadosCorridaDTO data = service.processarCorrida();
 		 HttpHeaders httpHeaders = new HttpHeaders();
          return new ResponseEntity<DadosCorridaDTO>(data, httpHeaders, HttpStatus.CREATED);  
