@@ -45,6 +45,7 @@ public class ProcessaCorridaController {
 				out.write(buffer, 0, lengthRead);
 				out.flush();
 			}
+			out.close();
 		}
          //busca o processamento da corrida
 		DadosCorridaDTO data = service.processarCorrida();

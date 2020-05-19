@@ -43,17 +43,17 @@ public class RanqueaCorridaService {
 
 			if (Utils.retornarMelhorVolta(melhorVoltaCorrida.getTempoVolta(), volta.getTempoVolta()))
 				melhorVoltaCorrida = volta;
-
+				
 			if (Utils.retornarMelhorVolta(melhorVoltaPiloto.getTempoVolta(), volta.getTempoVolta()))
 				melhorVoltaPiloto = volta;
-
+			
 			somaTempoTotal = Helpers.sormarTempo(somaTempoTotal, volta.getTempoVolta());
-
+		       //TODO AJUSTAR , POIS O ULTIMO NÃO ESTÁ SENDO RELACIONADO
 			if (idPiloto != volta.getIdPiloto()) {
-
+			
 				double media = somaVelocidadeMedia / contVoltas;
-
-				// monta o dto de retorno
+				
+				//monta o dto de retorno
 				PilotoDTO dto = new PilotoDTO();
 				dto.setIdPiloto(idPiloto);
 				dto.setNomePiloto(volta.getNomePiloto());
@@ -62,7 +62,7 @@ public class RanqueaCorridaService {
 				dto.setVelocidadeMediaProva(Helpers.formatarDuasCasasDecimais(media));
 				dto.setTempoMelhorVolta(melhorVoltaPiloto.getTempoVolta());
 				listaMelhoresVoltasPiloto.add(dto);
-
+				
 				idPiloto = volta.getIdPiloto();
 				melhorVoltaPiloto = volta;
 				contVoltas = 0;
@@ -70,38 +70,37 @@ public class RanqueaCorridaService {
 				somaTempoTotal = new Time(0);
 				idPiloto = volta.getIdPiloto();
 			}
-
+			
 		}
-		// busca o tempo do vencedor
+		//busca o tempo do vencedor
 		Time tempoTotalVencedor = retornaTempoVencedor.retornarMelhorTempo(listaMelhoresVoltasPiloto);
-
-		// retorna a lista printando as difernças de tempo
+		
+		//retorna a lista printando as difernças de tempo
 		listaMelhoresVoltasPiloto = retornarVoltasDiferencaVencedor(listaMelhoresVoltasPiloto, tempoTotalVencedor);
-		// ordena lista
+		//ordena lista
 		Collections.sort(listaMelhoresVoltasPiloto);
-		// monta o retorno dto
+		//monta o retorno dto
 		return new DadosCorridaDTO(listaVoltas, listaMelhoresVoltasPiloto, melhorVoltaCorrida);
 	}
 
-	// retorna a diferença com a volta do vencedor
+	//retorna a diferença com a volta do vencedor
 	private List<PilotoDTO> retornarVoltasDiferencaVencedor(List<PilotoDTO> pilotos, Time tempoVencedor) {
 		LocalDateTime tempoDataVencedor = this.parsearData(tempoVencedor);
 		System.out.println(tempoVencedor);
 		for (PilotoDTO volta : pilotos) {
-
+         
 			LocalDateTime tempoDataPiloto = this.parsearData(volta.getTempoTotalProva());
 			long tempototal = ChronoUnit.SECONDS.between(tempoDataVencedor, tempoDataPiloto);
 			long segundos = tempototal % 60;
 			long minutos = ((tempototal - segundos) / 60) % 60;
-			long horas = ((tempototal - segundos - (minutos * 60))) / (60 * 60);
-			volta.setTempoPosPrimeiroColocado(
-					horas + ":" + Helpers.formatarParaRelogio(minutos) + ":" + Helpers.formatarParaRelogio(segundos));
+			long horas = ((tempototal - segundos - (minutos*60)))/(60*60);
+			volta.setTempoPosPrimeiroColocado(horas + ":" + Helpers.formatarParaRelogio(minutos) + ":" + Helpers.formatarParaRelogio(segundos));
 
 		}
 		return pilotos;
 	}
 
-	// retorna data parseada
+	//retorna data parseada
 	private LocalDateTime parsearData(Time tempo) {
 		Date dataAtual = new Date();
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
